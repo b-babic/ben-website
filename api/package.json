@@ -1,0 +1,7 @@
+{
+  "name": "api",
+  "private": true,
+  "scripts": {
+    "dev": "php -S localhost:8000 kirby/router.php"
+  }
+}

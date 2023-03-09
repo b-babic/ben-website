@@ -1,0 +1,83 @@
+# System files
+# ------------
+
+Icon
+.DS_Store
+
+# API
+# ---------------
+# ---------------
+
+# Temporary files
+# ---------------
+
+api/media/*
+!api/media/index.html
+
+# Lock files
+# ---------------
+
+.lock
+
+# Editors
+# (sensitive workspace files)
+# ---------------------------
+*.sublime-workspace
+/.vscode
+/.idea
+
+# -------------SECURITY-------------
+# NEVER publish these files via Git!
+# -------------SECURITY-------------
+
+# Cache Files
+# ---------------
+
+api/site/cache/*
+!api/site/cache/index.html
+
+# Accounts
+# ---------------
+
+api/site/accounts/*
+!api/site/accounts/index.html
+
+# Sessions
+# ---------------
+
+api/site/sessions/*
+!api/site/sessions/index.html
+
+# License
+# ---------------
+
+api/site/config/.license
+api/site/config/config.php
+!api/site/config/config.example.php
+
+# Web
+# ---------------
+# ---------------
+
+# build output
+web/dist/
+
+# generated types
+web/.astro/
+
+# dependencies
+node_modules/
+/node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store

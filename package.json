@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "scripts": {
+    "dev:web": "pnpm --prefix web run dev",
+    "dev:api": "pnpm --prefix api run dev",
+    "dev": "pnpm run dev:api & pnpm run dev:web"
+  }
+}
