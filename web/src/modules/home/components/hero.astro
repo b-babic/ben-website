@@ -1,12 +1,5 @@
 ---
-interface HomeContent {
-  firstname: string;
-  lastname: string;
-  heading: string;
-  subheading: string;
-  companyname: string;
-  companyurl: string;
-}
+import type { HomeContent } from "../utils/types.astro";
 
 interface Props {
   data: HomeContent;
@@ -14,8 +7,7 @@ interface Props {
 
 const { data } = Astro.props;
 
-const { firstname, lastname, heading, subheading, companyname, companyurl } =
-  data;
+const { firstname, heading, subheading, companyname, companyurl } = data;
 ---
 
 <header>

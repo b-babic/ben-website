@@ -1,0 +1,32 @@
+---
+import type { HomeContent } from "../utils/types.astro";
+
+export interface HomeData {
+  content: HomeContent;
+}
+
+export async function useHomeData(): Promise<HomeData> {
+  // TODO: Extract to env variables
+  const api = "http://cms.benjaminbabic.test/api/query";
+  const username = "foo@bar.com";
+  const password = "test1234";
+  const headers = {
+    Authorization: Buffer.from(`${username}:${password}`).toString("base64"),
+  };
+  const query = {
+    query: "site.page('home')",
+  };
+
+  const response = await fetch(api, {
+    headers,
+    method: "POST",
+    body: JSON.stringify(query),
+  });
+  const data = await response.json();
+  const {
+    result: { content },
+  } = data;
+
+  return { content } as unknown as HomeData;
+}
+---

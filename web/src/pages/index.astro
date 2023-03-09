@@ -1,28 +1,10 @@
 ---
 import DefaultLayout from "~/modules/shared/layouts/default.astro";
 import Hero from "~/modules/home/components/hero.astro";
+import { useHomeData } from "~/modules/home/composables/use-home-data.astro";
 
 // Fetch data
-// TODO: Extract to env variables
-const api = "http://cms.benjaminbabic.test/api/query";
-const username = "foo@bar.com";
-const password = "test1234";
-const headers = {
-  Authorization: Buffer.from(`${username}:${password}`).toString("base64"),
-};
-const query = {
-  query: "site.page('home')",
-};
-
-const response = await fetch(api, {
-  headers,
-  method: "POST",
-  body: JSON.stringify(query),
-});
-const data = await response.json();
-const {
-  result: { content },
-} = data;
+const { content } = await useHomeData();
 ---
 
 <DefaultLayout title="Benjamin Babic">
