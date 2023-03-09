@@ -5,6 +5,11 @@ module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
+      fontWeight: {
+        ...defaultTheme.fontWeight,
+        semiBold: "500",
+        extraBold: "800",
+      },
       fontFamily: {
         sans: ["Source Sans Pro", "sans-serif"],
         serif: ["Alegreya", "serif"],

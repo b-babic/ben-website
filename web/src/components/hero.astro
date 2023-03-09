@@ -1,37 +1,55 @@
 ---
+interface HomeContent {
+  firstname: string;
+  lastname: string;
+  heading: string;
+  subheading: string;
+  companyname: string;
+  companyurl: string;
+}
+
+interface Props {
+  data: HomeContent;
+}
+
+const { data } = Astro.props;
+
+const { firstname, lastname, heading, subheading, companyname, companyurl } =
+  data;
 ---
 
 <header>
   <div class="bg-gradient-to-b from-sand-300 to-white py-24">
     <div class="container mx-auto">
       <h1
-        class="text-6xl leading-snug tracking-tighter font-serif font-bold max-w-3xl"
+        class:list={[
+          "max-w-3xl",
+          "font-serif font-medium",
+          "text-7xl",
+          "break-normal",
+          "leading-tighter tracking-tight",
+          "mb-4",
+        ]}
       >
-        Tools for Thought as Cultural Practices, not Computational Objects
+        <strong class="font-extrabold">{firstname}</strong>
+        {heading}
       </h1>
       <h2
-        class="text-3xl font-serif font-semibold text-gray-600 leading-normal tracking-wide"
+        class:list={[
+          "max-w-3xl",
+          "font-sans font-normal",
+          "leading-normal tracking-wide",
+          "text-2xl text-gray-700",
+        ]}
       >
-        On seeing tools for thought through a historical and anthropological
-        lens
+        {subheading}
+        <a
+          href={companyurl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline text-emerald-700">{companyname}</a
+        >.
       </h2>
-
-      <div class="prose prose-xl mt-12">
-        <p>
-          The term <strong>tools for thought</strong> has become a new rallying point
-          over the last few years. People who might otherwise gather around keywords
-          like personal knowledge management (PKM), note-taking, networked thought,
-          computer-supported collaborative work (CSCW), knowledge graphs, or human-computer
-          interaction (HCI), are reframing their work.
-        </p>
-        <p>
-          There are meetups and research groups and thought leaders and
-          accelerators. But more than anything, people are using the term to
-          describe a new class of software. Tools for thought is now a category
-          tag in the databases of venture capital firms. The phrase appears on
-          the landing page of every hot new knowledge management app:
-        </p>
-      </div>
     </div>
   </div>
 </header>
