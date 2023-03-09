@@ -1,0 +1,15 @@
+label: Author
+icon: account
+columns:
+  main:
+    type: column
+    width: 2/3
+    fields:
+      firstName:
+        label: First Name
+        type: text
+        required: true
+      lastName:
+        label: Last Name
+        type: text
+        required: false

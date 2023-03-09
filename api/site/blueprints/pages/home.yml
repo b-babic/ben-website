@@ -1,0 +1,8 @@
+title: Home Page
+icon: 📔
+
+tabs:
+  author: tabs/author
+  content: tabs/info
+  company: tabs/company
+  seo: tabs/home_seo

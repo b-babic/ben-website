@@ -1,0 +1,15 @@
+label: Content
+icon: text
+columns:
+  main:
+    type: column
+    width: 2/3
+    fields:
+      heading:
+        label: Title
+        type: text
+        required: true
+      subheading:
+        label: Subtitle
+        type: text
+        required: true
