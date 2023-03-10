@@ -1,5 +1,9 @@
 ---
 import DefaultLayout from "~/modules/shared/layouts/default.astro";
+
+import Heading from "~/modules/ui/components/heading.astro";
+import Link from "~/modules/ui/components/link.astro";
+
 import Hero from "~/modules/home/components/hero.astro";
 import { useHomeData } from "~/modules/home/composables/use-home-data.astro";
 
@@ -12,8 +16,36 @@ const { content } = await useHomeData();
     <Hero data={content} />
   </main>
 
-  <div class="container mx-auto">
-    <!-- TODO: Rethink this and extract if needed -->
-    I’d love to build something great with you, say hi mailto.
+  <div class="container mx-auto py-16">
+    <div class="prose mb-24">
+      <Heading variant="h1">Latest work</Heading>
+      <p>
+        Excepteur sunt reprehenderit non excepteur id. Minim et cupidatat
+        exercitation quis esse voluptate reprehenderit sint enim irure nulla
+        minim ut elit. Nisi dolore tempor duis commodo exercitation incididunt
+        cupidatat tempor anim duis do fugiat adipisicing eiusmod. Consectetur et
+        duis minim elit et ut.
+      </p>
+    </div>
+
+    <div class="prose mb-24">
+      <Heading variant="h1">Latest work</Heading>
+      <p>
+        Excepteur sunt reprehenderit non excepteur id. Minim et cupidatat
+        exercitation quis esse voluptate reprehenderit sint enim irure nulla
+        minim ut elit. Nisi dolore tempor duis commodo exercitation incididunt
+        cupidatat tempor anim duis do fugiat adipisicing eiusmod. Consectetur et
+        duis minim elit et ut.
+      </p>
+    </div>
+
+    <!-- TODO: Extract contact section -->
+    <hr class="mb-8" />
+    <Heading variant="h1">
+      I’d love to build something great with you, say
+
+      <!-- TODO: Add real email via .env file -->
+      <Link to="mailto:foo@bar.com" external>hi</Link>.
+    </Heading>
   </div>
 </DefaultLayout>

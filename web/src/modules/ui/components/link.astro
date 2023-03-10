@@ -1,0 +1,34 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type NativeAnchorProps = HTMLAttributes<"a">;
+type NativeAnchorPropsWihoutHref = Omit<NativeAnchorProps, "href">;
+type NativeAnchorHrefProp = HTMLAttributes<"a">["href"];
+
+interface Props extends NativeAnchorPropsWihoutHref {
+  to: NativeAnchorHrefProp;
+  external?: boolean;
+}
+
+const { to, external = false } = Astro.props;
+
+// If the link is external, we want to add the rel="noopener noreferrer" and target="_blank" attributes
+const rel = external ? "noopener noreferrer" : undefined;
+const target = external ? "_blank" : undefined;
+const classProp = Astro.props.class;
+---
+
+<a
+  href={to}
+  rel={rel}
+  target={target}
+  class:list={[
+    "inline-block",
+    "underline",
+    "text-emerald-700",
+    "font-normal",
+    classProp,
+  ]}
+>
+  <slot />
+</a>

@@ -1,6 +1,8 @@
 ---
 import type { HomeContent } from "../utils/types.astro";
+
 import Heading from "~/modules/ui/components/heading.astro";
+import Link from "~/modules/ui/components/link.astro";
 
 interface Props {
   data: HomeContent;
@@ -19,15 +21,10 @@ const { firstname, heading, subheading, companyname, companyurl } = data;
         {heading}
       </Heading>
 
-      <Heading variant="h2" intent="secondary" font="sans">
+      <Heading variant="h3" intent="secondary" font="sans">
         {subheading}
 
-        <a
-          href={companyurl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="ml-2 underline text-emerald-700">{companyname}</a
-        >.
+        <Link to={companyurl} external class="ml-2">{companyname}.</Link>
       </Heading>
     </div>
   </div>
