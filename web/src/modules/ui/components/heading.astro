@@ -1,0 +1,66 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cva, type VariantProps } from "class-variance-authority";
+
+type ValidHeadingTags = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "div";
+type Heading = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "display" | "custom";
+
+const { variant = "h2", intent = "primary", font = "serif" } = Astro.props;
+
+function getHeadingTag(level: Heading | null = "h2"): ValidHeadingTags {
+  if (!level) return "h2";
+
+  switch (level) {
+    case "h1":
+      return "h1";
+    case "h2":
+      return "h2";
+    case "h3":
+      return "h3";
+    case "h4":
+      return "h4";
+    case "h5":
+      return "h5";
+    case "h6":
+      return "h6";
+    case "display":
+      return "h1";
+    case "custom":
+      return "div";
+  }
+}
+
+const HeadingTag = getHeadingTag(variant);
+
+const titleVariant = cva(["font-medium", "break-normal", "max-w-3xl"], {
+  variants: {
+    variant: {
+      h1: ["text-5xl", "leading-tighter tracking-tight"],
+      h2: ["text-2xl", "leading-normal tracking-wide"],
+      h3: ["text-xl", "leading-normal tracking-wide"],
+      h4: ["text-xl", "leading-normal tracking-wide"],
+      h5: ["text-xl", "leading-normal tracking-wide"],
+      h6: ["text-lg", "leading-normal tracking-wide"],
+      display: ["text-7xl", "leading-tighter tracking-tight"],
+      custom: [],
+    },
+    intent: {
+      primary: ["text-black"],
+      secondary: ["text-gray-700"],
+    },
+    font: {
+      sans: ["font-sans"],
+      serif: ["font-serif"],
+    },
+  },
+  defaultVariants: { intent: "primary", variant: "h2", font: "serif" },
+});
+
+export interface Props
+  extends HTMLAttributes<typeof HeadingTag>,
+    VariantProps<typeof titleVariant> {}
+---
+
+<HeadingTag class={titleVariant({ variant, intent, font })}>
+  <slot />
+</HeadingTag>

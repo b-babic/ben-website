@@ -1,5 +1,6 @@
 ---
 import type { HomeContent } from "../utils/types.astro";
+import Heading from "~/modules/ui/components/heading.astro";
 
 interface Props {
   data: HomeContent;
@@ -13,35 +14,21 @@ const { firstname, heading, subheading, companyname, companyurl } = data;
 <header>
   <div class="bg-gradient-to-b from-sand-300 to-white py-24">
     <div class="container mx-auto">
-      <h1
-        class:list={[
-          "max-w-3xl",
-          "font-serif font-medium",
-          "text-7xl",
-          "break-normal",
-          "leading-tighter tracking-tight",
-          "mb-4",
-        ]}
-      >
-        <strong class="font-extrabold">{firstname}</strong>
+      <Heading variant="display" class="mb-4">
+        <strong class="font-extrabold mr-2">{firstname}</strong>
         {heading}
-      </h1>
-      <h2
-        class:list={[
-          "max-w-3xl",
-          "font-sans font-normal",
-          "leading-normal tracking-wide",
-          "text-2xl text-gray-700",
-        ]}
-      >
+      </Heading>
+
+      <Heading variant="h2" intent="secondary" font="sans">
         {subheading}
+
         <a
           href={companyurl}
           target="_blank"
           rel="noopener noreferrer"
-          class="underline text-emerald-700">{companyname}</a
+          class="ml-2 underline text-emerald-700">{companyname}</a
         >.
-      </h2>
+      </Heading>
     </div>
   </div>
 </header>
